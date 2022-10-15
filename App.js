@@ -44,10 +44,12 @@ const App = () => {
 
   const enterText = (text) => {
     setSearchInput(words.filter((item) => item.keyword.toLowerCase().includes(text.toLowerCase())))
+    setSuggestedInput(words)
   }
 
   const updateSuggestions = ({keyword}) => {
     setSearchInput(words.filter((item) => item.keyword.toLowerCase().includes(keyword.toLowerCase())))
+    setSuggestedInput(keyword)
   }
 
 
@@ -56,7 +58,7 @@ const App = () => {
      <View className="flex-col justify-center items-center h-screen mt-56">
       <Image source={img} className="h-32 w-96"/>
       <View className="flex flex-row justify-center items-center align-middle mt-4">
-        <TextInput onChangeText={enterText} className="border border-1 w-72 p-3 rounded" />
+        <TextInput value={suggestedInput} onChangeText={enterText} className="border border-1 w-72 p-3 rounded" />
         <TouchableOpacity className="bg-gray-300 p-3 px-8 rounded">
           <Image source={search} className="h-5 w-5"/>
         </TouchableOpacity>
